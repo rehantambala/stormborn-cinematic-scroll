@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thor | Marvel Cinematic Experience</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="app">
+    <div id="canvas-container"></div>
+
+    <div id="cursor-dot"></div>
+    <div id="cursor-bolt">⚡</div>
+    <div id="cursor-particles"></div>
+
+    <main id="story">
+      <!-- Scene 1: The Prince of Asgard -->
+      <section id="scene-1" class="scene story-scene">
+        <div class="scene-bg">
+          <img src="/01_prince.png" alt="The Prince of Asgard" class="scene-img" loading="eager" />
+        </div>
+        <div class="scene-overlay">
+          <div class="scene-content">
+            <h1 class="scene-title">THE PRINCE OF ASGARD</h1>
+            <p class="scene-description">Thor, heir to Odin's throne, beloved by warriors and feared by enemies.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 2: The Man Behind the Legend -->
+      <section id="scene-2" class="scene story-scene">
+        <div class="scene-bg">
+          <img src="/02_man.png" alt="The Man Behind the Legend" class="scene-img" loading="lazy" />
+        </div>
+        <div class="scene-overlay">
+          <div class="scene-content">
+            <h2 class="scene-title">THE MAN BEHIND THE LEGEND</h2>
+            <p class="scene-description">Not just a warrior, but a prince learning what it means to lead.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 3: The Storm Approaches -->
+      <section id="scene-3" class="scene story-scene">
+        <div class="scene-bg">
+          <img src="/03_storm.png" alt="The Storm Approaches" class="scene-img" loading="lazy" />
+        </div>
+        <div class="scene-overlay">
+          <div class="scene-content">
+            <h2 class="scene-title">THE STORM APPROACHES</h2>
+            <p class="scene-description">War rises. The sky begins to answer his call.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 4: The First Strike -->
+      <section id="scene-4" class="scene story-scene">
+        <div class="scene-bg">
+          <img src="/04_strike.png" alt="The First Strike" class="scene-img" loading="lazy" />
+        </div>
+        <div class="scene-overlay">
+          <div class="scene-content">
+            <h2 class="scene-title">THE FIRST STRIKE</h2>
+            <p class="scene-description">Lightning tears through the battlefield as the god awakens.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 5: Ascension -->
+      <section id="scene-5" class="scene story-scene">
+        <div class="scene-bg">
+          <img src="/05_ascension.png" alt="Ascension" class="scene-img" loading="lazy" />
+        </div>
+        <div class="scene-overlay">
+          <div class="scene-content">
+            <h2 class="scene-title">ASCENSION</h2>
+            <p class="scene-description">The storm no longer surrounds him. He commands it.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 6: Unleashed Power -->
+      <section id="scene-6" class="scene story-scene">
+        <div class="scene-bg">
+          <img src="/06_power.png" alt="Unleashed Power" class="scene-img" loading="lazy" />
+        </div>
+        <div class="scene-overlay">
+          <div class="scene-content">
+            <h2 class="scene-title">UNLEASHED POWER</h2>
+            <p class="scene-description">Thunder roars. Lightning fractures the sky.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 7: The God of Thunder -->
+      <section id="scene-7" class="scene story-scene">
+        <div class="scene-bg">
+          <img src="/07_legend.png" alt="The God of Thunder" class="scene-img" loading="lazy" />
+        </div>
+        <div class="scene-overlay">
+          <div class="scene-content">
+            <h2 class="scene-title">THE GOD OF THUNDER</h2>
+            <p class="scene-description">Not just a prince. Not just a warrior. A legend.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="thunder-flash"></div>
+    <div id="lightning-strike-overlay"></div>
+    <div id="massive-lightning-strike"></div>
+    <div id="transition-bolt"></div>
+
+    <div id="scroll-progress"></div>
+  </div>
+  <script type="module" src="/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,428 @@
+/* Thor Cinematic - Marvel Storm Theme */
+:root {
+  --storm-bg: #030308;
+  --electric-blue: #00d4ff;
+  --lightning-blue: #4da6ff;
+  --deep-blue: #060c18;
+  --glow-cyan: rgba(0, 212, 255, 0.6);
+  --flash-white: rgba(255, 255, 255, 0.95);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cinzel', serif;
+  background: var(--storm-bg);
+  color: #fff;
+  overflow-x: hidden;
+  cursor: none;
+  min-height: 100vh;
+}
+
+#app {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Subtle cinematic vignette to keep focus center */
+#app::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background:
+    radial-gradient(ellipse 120% 80% at 50% 35%, rgba(0, 0, 0, 0.0) 0%, rgba(0,0,0,0.45) 65%, rgba(0,0,0,0.75) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0,0,0,0.65) 100%);
+  mix-blend-mode: multiply;
+}
+
+/* Canvas fills viewport behind content */
+#canvas-container {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#canvas-container canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Story container & scenes */
+#story {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-out;
+}
+
+.scene.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scene-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.scene-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center center;
+}
+
+.scene-overlay {
+  position: relative;
+  z-index: 2;
+  padding: 0 6vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hero - floating Thor (text-only overlay; image is full-screen background) */
+.hero-scene {
+  padding-top: 0;
+}
+
+/* Story slide body text (scenes 2 & 3) */
+.scene-text {
+  max-width: 520px;
+  text-align: left;
+  margin-left: clamp(6vw, 10vw, 14vw);
+  margin-right: auto;
+  text-shadow: 0 14px 50px rgba(0, 0, 0, 0.8);
+}
+
+.scene-heading {
+  font-weight: 900;
+  font-size: clamp(32px, 4vw, 52px);
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+
+.scene-body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-size: clamp(14px, 1.3vw, 18px);
+  line-height: 1.7;
+  color: rgba(220, 235, 250, 0.9);
+}
+
+.thor-float {
+  position: relative;
+  will-change: transform;
+  display: inline-block;
+}
+
+#thor-hero-img {
+  max-width: min(70vw, 720px);
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 0 30px rgba(180, 210, 255, 0.4)) drop-shadow(0 0 70px rgba(80, 130, 200, 0.4));
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-glow {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(ellipse at center, transparent 35%, rgba(100, 150, 220, 0.18) 60%, transparent 75%);
+  pointer-events: none;
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+/* Clean hero landing layout – Thor + centered text */
+.hero-stack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 3vh, 32px);
+  text-align: center;
+}
+
+.hero-text {
+  max-width: 640px;
+  text-shadow: 0 12px 40px rgba(0, 0, 0, 0.75);
+}
+
+.hero-text-center { text-align: center; }
+
+.hero-kicker {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  letter-spacing: 0.32em;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 14px;
+}
+
+.hero-title {
+  font-weight: 900;
+  font-size: clamp(44px, 6vw, 78px);
+  letter-spacing: 0.08em;
+  line-height: 0.95;
+  margin-bottom: 14px;
+}
+
+.hero-subtitle {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-size: clamp(14px, 1.35vw, 18px);
+  line-height: 1.6;
+  color: rgba(230, 245, 255, 0.85);
+  margin-bottom: 20px;
+}
+
+.hero-hint {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(0, 212, 255, 0.85);
+}
+
+/* Thor glow boost during lightning strikes */
+.thor-float.flash {
+  filter: drop-shadow(0 0 42px rgba(210, 230, 255, 0.9)) drop-shadow(0 0 110px rgba(140, 190, 255, 0.9));
+  transition: filter 0.2s ease-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-0.5deg); }
+  50% { transform: translateY(-18px) rotate(0.5deg); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* Strike scene */
+.strike-scene .thor-reveal img,
+.power-scene .thor-reveal img {
+  max-width: min(90vw, 1100px);
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+/* Poster layout for sections 2/3 */
+.poster-layout {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 0.35fr 0.65fr;
+  gap: clamp(18px, 3vw, 44px);
+  align-items: center;
+}
+
+.poster-text {
+  align-self: center;
+  text-align: left;
+  padding-left: clamp(0px, 1vw, 10px);
+  text-shadow: 0 14px 50px rgba(0, 0, 0, 0.75);
+}
+
+.poster-kicker {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  letter-spacing: 0.36em;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 12px;
+}
+
+.poster-title {
+  font-weight: 900;
+  font-size: clamp(32px, 4.2vw, 56px);
+  letter-spacing: 0.08em;
+  line-height: 1.05;
+}
+
+.poster-image {
+  justify-self: center;
+}
+
+#thor-strike-img {
+  filter: drop-shadow(0 0 60px var(--glow-cyan));
+}
+
+#thor-power-img {
+  filter: drop-shadow(0 0 80px var(--glow-cyan)) drop-shadow(0 0 120px rgba(77, 166, 255, 0.4));
+}
+
+/* Overlays */
+#lightning-strike-overlay,
+#thunder-flash,
+#scene3-lightning-overlay,
+#massive-lightning-strike,
+#transition-bolt {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+}
+
+#thunder-flash {
+  background: radial-gradient(ellipse 120% 120% at 50% 50%, rgba(255,255,255,0.95) 0%, rgba(200,230,255,0.7) 40%, transparent 70%);
+  mix-blend-mode: screen;
+  transition: none;
+}
+
+#massive-lightning-strike {
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.9) 40%, transparent 70%);
+  mix-blend-mode: screen;
+}
+
+/* Diagonal transition bolt streak */
+#transition-bolt {
+  z-index: 11;
+}
+
+#transition-bolt::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -30%;
+  width: 160%;
+  height: 140%;
+  background:
+    linear-gradient(
+      75deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.0) 42%,
+      rgba(255, 255, 255, 0.95) 48%,
+      rgba(210, 230, 255, 0.9) 52%,
+      rgba(150, 200, 255, 0.0) 58%,
+      transparent 100%
+    );
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.7);
+  filter: blur(0.5px);
+  transform-origin: center;
+}
+
+/* Custom cursor */
+#cursor-dot {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--electric-blue);
+  box-shadow: 0 0 20px var(--electric-blue), 0 0 40px var(--lightning-blue);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s ease-out, width 0.2s, height 0.2s;
+}
+
+#cursor-bolt {
+  display: none;
+}
+
+#cursor-particles {
+  display: none;
+}
+
+/* Scroll progress indicator (optional, can hide) */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--electric-blue), var(--lightning-blue));
+  z-index: 100;
+  transform-origin: left;
+  box-shadow: 0 0 10px var(--electric-blue);
+}
+
+/* Screen shake container - applied by JS */
+body.shake {
+  animation: screen-shake 0.4s ease-out;
+}
+
+@keyframes screen-shake {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-8px, -4px); }
+  20% { transform: translate(8px, 4px); }
+  30% { transform: translate(-6px, 4px); }
+  40% { transform: translate(6px, -4px); }
+  50% { transform: translate(-4px, 2px); }
+  60% { transform: translate(4px, -2px); }
+  70% { transform: translate(-2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  90% { transform: translate(-1px, 0); }
+}
+
+/* Electric particle trail - drawn by JS in cursor layer */
+.cursor-spark {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--electric-blue);
+  box-shadow: 0 0 10px var(--electric-blue);
+  pointer-events: none;
+  z-index: 9996;
+}
+
+/* Responsive: show default cursor on touch */
+@media (hover: none) {
+  body {
+    cursor: auto;
+  }
+  #cursor-dot,
+  #cursor-bolt,
+  #cursor-particles {
+    display: none;
+  }
+}
+
+@media (max-width: 980px) {
+  .hero-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-text {
+    text-align: center;
+    margin: 0 auto;
+    padding-right: 0;
+  }
+  .poster-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .poster-text {
+    text-align: center;
+  }
+}

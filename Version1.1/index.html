@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thor | Marvel Cinematic Experience</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="app">
+    <div id="canvas-container"></div>
+
+    <div id="cursor-dot"></div>
+    <div id="cursor-bolt">⚡</div>
+    <div id="cursor-particles"></div>
+
+    <main id="story">
+      <!-- Scene 1: Hero strike -->
+      <section id="scene-1" class="scene story-scene hero-scene">
+        <div class="scene-bg">
+          <img src="/thor_strike.png" alt="Thor Odinson" class="scene-img" />
+        </div>
+        <div class="scene-overlay">
+          <div class="hero-stack">
+            <div class="thor-float" id="thor-hero">
+              <div class="hero-glow" aria-hidden="true"></div>
+            </div>
+            <div class="hero-text hero-text-center">
+              <div class="hero-kicker">MARVEL CINEMATIC EXPERIENCE</div>
+              <h1 class="hero-title">THOR ODINSON</h1>
+              <p class="hero-subtitle">Son of Odin. God of Thunder. Protector of Asgard.</p>
+              <div class="hero-hint">Scroll to continue the story</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 2: Thor sky -->
+      <section id="scene-2" class="scene story-scene sky-scene">
+        <div class="scene-bg">
+          <img src="/thor_sky.png" alt="Thor beneath the storm" class="scene-img" />
+        </div>
+        <div class="scene-overlay">
+          <div class="scene-text">
+            <h2 class="scene-heading">THE STORM ABOVE</h2>
+            <p class="scene-body">
+              Lightning crowns the sky as Thor channels the fury of the storm, guarding the realms from the darkness
+              beyond.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 3: Thor power -->
+      <section id="scene-3" class="scene story-scene power-scene">
+        <div class="scene-bg">
+          <img src="/thor_power.png" alt="Thor unleashed" class="scene-img" />
+        </div>
+        <div class="scene-overlay">
+          <div class="scene-text">
+            <h2 class="scene-heading">UNLEASHED POWER</h2>
+            <p class="scene-body">
+              Thunder roars and lightning fractures the sky as the God of Thunder stands alone against the storm.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="thunder-flash"></div>
+    <div id="lightning-strike-overlay"></div>
+    <div id="massive-lightning-strike"></div>
+    <div id="transition-bolt"></div>
+
+    <div id="scroll-progress"></div>
+  </div>
+  <script type="module" src="/main.js"></script>
+</body>
+</html>

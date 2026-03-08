@@ -1,0 +1,304 @@
+/* Thor Cinematic - Marvel Storm Theme */
+:root {
+  --storm-bg: #030308;
+  --electric-blue: #00d4ff;
+  --lightning-blue: #4da6ff;
+  --deep-blue: #060c18;
+  --glow-cyan: rgba(0, 212, 255, 0.6);
+  --flash-white: rgba(255, 255, 255, 0.95);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cinzel', serif;
+  background: var(--storm-bg);
+  color: #fff;
+  overflow-x: hidden;
+  cursor: none;
+  min-height: 100vh;
+}
+
+#app {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Subtle cinematic vignette to keep focus center */
+#app::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background:
+    radial-gradient(ellipse 120% 80% at 50% 35%, rgba(0, 0, 0, 0.0) 0%, rgba(0,0,0,0.45) 65%, rgba(0,0,0,0.75) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0,0,0,0.65) 100%);
+  mix-blend-mode: multiply;
+}
+
+/* Canvas fills viewport behind content */
+#canvas-container {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#canvas-container canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Story container & scenes */
+#story {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  /* Smooth fade transition - no other transforms */
+  transition: opacity 0.8s ease-in-out;
+  will-change: opacity;
+}
+
+.scene.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Background image container */
+.scene-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.scene-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  /* No transforms - keep images static */
+  transform-origin: center center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Text overlay container */
+.scene-overlay {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6vw;
+}
+
+/* Centered text content */
+.scene-content {
+  max-width: 800px;
+  text-align: center;
+  text-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.9),
+    0 8px 40px rgba(0, 0, 0, 0.7),
+    0 2px 8px rgba(0, 0, 0, 1);
+}
+
+.scene-title {
+  font-weight: 900;
+  font-size: clamp(36px, 5vw, 72px);
+  letter-spacing: 0.12em;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.scene-description {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-size: clamp(16px, 1.5vw, 22px);
+  line-height: 1.7;
+  color: rgba(230, 240, 255, 0.92);
+  max-width: 640px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+/* Overlays for lightning effects */
+#lightning-strike-overlay,
+#thunder-flash,
+#scene3-lightning-overlay,
+#massive-lightning-strike,
+#transition-bolt {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+}
+
+#thunder-flash {
+  background: radial-gradient(ellipse 120% 120% at 50% 50%, rgba(255,255,255,0.95) 0%, rgba(200,230,255,0.7) 40%, transparent 70%);
+  mix-blend-mode: screen;
+  transition: none;
+}
+
+#massive-lightning-strike {
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.9) 40%, transparent 70%);
+  mix-blend-mode: screen;
+}
+
+/* Diagonal transition bolt streak */
+#transition-bolt {
+  z-index: 11;
+}
+
+#transition-bolt::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -30%;
+  width: 160%;
+  height: 140%;
+  background:
+    linear-gradient(
+      75deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.0) 42%,
+      rgba(255, 255, 255, 0.95) 48%,
+      rgba(210, 230, 255, 0.9) 52%,
+      rgba(150, 200, 255, 0.0) 58%,
+      transparent 100%
+    );
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.7);
+  filter: blur(0.5px);
+  transform-origin: center;
+}
+
+/* Custom cursor */
+#cursor-dot {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--electric-blue);
+  box-shadow: 0 0 20px var(--electric-blue), 0 0 40px var(--lightning-blue);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s ease-out, width 0.2s, height 0.2s;
+}
+
+#cursor-bolt {
+  display: none;
+}
+
+#cursor-particles {
+  display: none;
+}
+
+/* Scroll progress indicator */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--electric-blue), var(--lightning-blue));
+  z-index: 100;
+  transform-origin: left;
+  box-shadow: 0 0 10px var(--electric-blue);
+}
+
+/* Screen shake for lightning strikes */
+body.shake {
+  animation: screen-shake 0.4s ease-out;
+}
+
+@keyframes screen-shake {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-8px, -4px); }
+  20% { transform: translate(8px, 4px); }
+  30% { transform: translate(-6px, 4px); }
+  40% { transform: translate(6px, -4px); }
+  50% { transform: translate(-4px, 2px); }
+  60% { transform: translate(4px, -2px); }
+  70% { transform: translate(-2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  90% { transform: translate(-1px, 0); }
+}
+
+/* Electric particle trail - drawn by JS in cursor layer */
+.cursor-spark {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--electric-blue);
+  box-shadow: 0 0 10px var(--electric-blue);
+  pointer-events: none;
+  z-index: 9996;
+}
+
+/* Responsive: show default cursor on touch */
+@media (hover: none) {
+  body {
+    cursor: auto;
+  }
+  #cursor-dot,
+  #cursor-bolt,
+  #cursor-particles {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .scene-title {
+    font-size: clamp(28px, 7vw, 48px);
+    letter-spacing: 0.1em;
+  }
+  
+  .scene-description {
+    font-size: clamp(14px, 3vw, 18px);
+  }
+  
+  .scene-overlay {
+    padding: 0 4vw;
+  }
+}
+
+/* Performance optimizations */
+.scene-img {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.scene {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}

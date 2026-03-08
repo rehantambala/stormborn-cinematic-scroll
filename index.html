@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thor | Marvel Cinematic Experience</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ── CINEMATIC INTRO OVERLAY ───────────────────────────────────────── -->
+  <div id="intro">
+    <!-- Full-screen cinematic hero background image -->
+    <div id="intro-bg">
+      <img src="/lo.jpg" alt="Thor Odinson" id="intro-hero-img" />
+      <div id="intro-bg-vignette"></div>
+      <div id="intro-bg-storm"></div>
+    </div>
+    <!-- Rain streaks overlay -->
+    <canvas id="intro-rain"></canvas>
+    <canvas id="intro-canvas"></canvas>
+    <div id="intro-flash"></div>
+    <div id="intro-logo">
+      <div class="intro-kicker">MARVEL STUDIOS</div>
+      <div class="intro-title-wrap">
+        <span class="intro-word" data-word="THOR">THOR</span>
+      </div>
+      <div class="intro-sub">GOD OF THUNDER</div>
+    </div>
+  </div>
+  <!-- ─────────────────────────────────────────────────────────────────── -->
+
+  <div id="app">
+    <div id="canvas-container"></div>
+
+    <div id="cursor-dot"></div>
+    <div id="cursor-bolt">⚡</div>
+    <div id="cursor-particles"></div>
+
+    <main id="story">
+      <!-- Scene 1: The Prince of Asgard -->
+      <section id="scene-1" class="scene story-scene hero-scene">
+        <div class="scene-bg">
+          <img src="/01_prince.png" alt="The Prince of Asgard" class="scene-img" />
+        </div>
+        <div class="scene-overlay">
+          <div class="hero-text hero-text-center">
+            <h1 class="hero-title">THE PRINCE<br>OF ASGARD</h1>
+            <p class="hero-subtitle">Thor, heir to Odin's throne, raised among gods and warriors in the golden realm of Asgard.</p>
+            <div class="hero-hint">Scroll to continue the story</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 2: The Man Behind the Legend -->
+      <section id="scene-2" class="scene story-scene">
+        <div class="scene-bg">
+          <img src="/02_man.png" alt="The Man Behind the Legend" class="scene-img" />
+        </div>
+        <div class="scene-overlay">
+          <div class="story-text">
+            <h2 class="story-title">THE MAN <br>BEHIND THE LEGEND</h2>
+            <p class="story-body">Before becoming a legend, Thor was a warrior learning the true meaning of power and responsibility.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 3: The Storm Approaches -->
+      <section id="scene-3" class="scene story-scene">
+        <div class="scene-bg">
+          <img src="/03_storm.png" alt="The Storm Approaches" class="scene-img" />
+        </div>
+        <div class="scene-overlay">
+          <div class="story-text">
+            <h2 class="story-title">THE STORM <br>APPROACHES</h2>
+            <p class="story-body">When darkness threatens the realms, the skies themselves begin to answer Thor's call.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 4: The First Strike -->
+      <section id="scene-4" class="scene story-scene">
+        <div class="scene-bg">
+          <img src="/04_strike.png" alt="The First Strike" class="scene-img" />
+        </div>
+        <div class="scene-overlay">
+          <div class="story-text">
+            <h2 class="story-title">THE FIRST STRIKE</h2>
+            <p class="story-body">Lightning crashes across the battlefield as the God of Thunder unleashes his power.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 5: Ascension -->
+      <section id="scene-5" class="scene story-scene">
+        <div class="scene-bg">
+          <img src="/05_ascension.png" alt="Ascension" class="scene-img" />
+        </div>
+        <div class="scene-overlay">
+          <div class="story-text">
+            <h2 class="story-title">ASCENSION</h2>
+            <p class="story-body">Thor rises beyond prince and warrior, embracing the power that flows through the storm.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 6: Unleashed Power -->
+      <section id="scene-6" class="scene story-scene">
+        <div class="scene-bg">
+          <img src="/07_legend.png" alt="Unleashed Power" class="scene-img" />
+        </div>
+        <div class="scene-overlay">
+          <div class="story-text">
+            <h2 class="story-title">UNLEASHED POWER</h2>
+            <p class="story-body">Thunder roars and lightning fractures the sky as Thor commands the storm itself.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 7: The God of Thunder -->
+      <section id="scene-7" class="scene story-scene final-scene">
+        <div class="scene-bg">
+          <img src="/06_power.png" alt="The God of Thunder" class="scene-img" />
+        </div>
+        <div class="scene-overlay">
+          <div class="hero-text hero-text-center">
+            <h1 class="hero-title">THE GOD OF <br>THUNDER</h1>
+            <p class="hero-subtitle"><b>Across the realms, his name echoes with the storm — Thor, protector of Asgard.</b></p>
+          </div>
+        </div>
+      </section>
+
+    <section id="scene-8" class="scene story-scene hero-scene">
+        <div class="scene-bg">
+          <img src="/08_final.png" alt="Thor Odinson" class="scene-img" />
+        </div>
+        <div class="cene-overlay">
+          <div class="ero-stack">
+            <div class="thor-float" id="thor-ero">
+              <div class="ero-glow" aria-hidden="true"></div>
+            </div>
+            <div class="ero-text ero-text-center">
+              <div class="ero-kicker">THOR ODINSON</div>
+              <h1 class="ero-title">ONE MORE BATTLE</h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <div id="scroll-progress"></div>
+  </div>
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
