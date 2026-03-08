@@ -1,6 +1,15 @@
 # Thor Cinematic Webpage
 
 A Marvel-style cinematic Thor experience with a storm sky, lightning, and scroll-driven scenes.
+A cinematic scroll storytelling webpage inspired by Thor.
+
+## Versions
+
+v1.1 — Initial scroll experiment  
+v1.2 — Improved transitions  
+v1.3 — Refined animation timing  
+v2.1 — Visual redesign  
+v2.2 — Final cinematic version
 
 ## Run
 
